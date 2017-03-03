@@ -1,0 +1,3 @@
+rm *.o
+clang -c -I ${APEX}/amd64/include -I ${APEX}/include -I . -O2 -mno-red-zone -ffreestanding -fno-builtin -nostdlib -nostdinc -trigraphs -Wall -Wuninitialized -g -DTMACDIR=$TMACDIR -DTDEVNAME=$TDEVNAME -DFONTDIR=$FONTDIR -DNTERMDIR=$NTERMDIR -DTEXHYPHENS=$TEXHYPHENS -DDWBHOME=$DWBHOME -DNDEVNAME=$NDEVNAME -D_SUSV2_SOURCE -D_POSIX_SOURCE -D_LIMITS_EXTENSION -D_BSD_SOURCE -D_BSD_EXTENSION -DHAVE_SOCK_OPTS maketab.c
+ld -o maketab -static maketab.o ${APEX}/amd64/lib/crt1.o ${APEX}/amd64/lib/crti.o ${APEX}/amd64/lib/crtn.o -L ${APEX}/amd64/lib -L ${HARVEY}/amd64/lib -lap -lc

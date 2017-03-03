@@ -1,0 +1,3 @@
+rm *.o
+clang -c -I ${APEX}/amd64/include -I ${APEX}/include -I . -O2 -mno-red-zone -ffreestanding -fno-builtin -nostdlib -nostdinc -trigraphs -Wall -Wuninitialized -g -DUTF -D_SUSV2_SOURCE -D_REGEXP_EXTENSION -D_RESEARCH_SOURCE -D_POSIX_SOURCE -D_LIMITS_EXTENSION -D_BSD_SOURCE -D_BSD_EXTENSION -DHAVE_SOCK_OPTS *.c
+ld -o awk awkgram.o lex.o lib.o main.o parse.o proctab.o re.o run.o tran.o ${APEX}/amd64/lib/crt1.o ${APEX}/amd64/lib/crti.o ${APEX}/amd64/lib/crtn.o -L ${APEX}/amd64/lib -L ${HARVEY}/amd64/lib -lap -lc

@@ -1,0 +1,31 @@
+{
+	"awk": {
+		"Cflags": [
+			],
+		"Include": [
+			"../cmd.json"
+		],
+		"Name": "awk",
+		"Post": [
+			"mv awk /$ARCH/bin/",
+			"rm awkgram.c"
+		],
+		"Pre": [
+			"yacc -d awkgram.y",
+			"mv /sys/src/cmd/awk/y.tab.c /sys/src/cmd/awk/awkgram.c"
+		],
+		"Program": "awk",
+		"SourceFiles": [
+			"awkgram.c",
+			"lex.c",
+			"lib.c",
+			"main.c",
+			"maketab.c",
+			"parse.c",
+			"proctab.c",
+			"re.c",
+			"run.c",
+			"tran.c"
+		]
+	}
+}
